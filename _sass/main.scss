@@ -1,3 +1,45 @@
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 18px;
+  line-height: 1.5em;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.page-header {
+  padding-top: 1em;
+
+  ul {
+    display: flex;
+  }
+
+  li {
+    margin-right: 2em;
+    font-size: 1.5rem;
+  }
+  
+  a {
+    color: black;
+  }
+
+  .current {
+    color: red;
+  }
+}
+
+.container {
+  max-width: 700px;
+
+  padding: 0.5em 1em; 
+
+  @media screen and (min-width: 700px) {
+    padding: 1em 2em;
+  }
+}
+
+.latest-posts {
 }

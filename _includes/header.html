@@ -1,9 +1,13 @@
-<header>
-  <ul>
-    {% for item in site.data.navigation %}
-    <li>
-      <a href="{{item.link}}">{{item.name}}</a>
-    </li>
-    {% endfor %}
-  </ul>
-</header>
+<div class="container">
+  <header class="page-header">
+    <nav>
+      <ul>
+        {% for item in site.data.navigation %}
+        <li>
+          <a href="{{item.link}}" {% if page.url == item.link %}class="current"{% endif %}>{{item.name}}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </header>
+</div>
