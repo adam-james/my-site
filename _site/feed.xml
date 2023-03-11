@@ -1,4 +1,55 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-03-11T08:33:34-08:00</updated><id>http://localhost:4000/feed.xml</id><entry><title type="html">Tomorrow</title><link href="http://localhost:4000/2023/03/06/tomorrow.html" rel="alternate" type="text/html" title="Tomorrow" /><published>2023-03-06T00:00:00-08:00</published><updated>2023-03-06T00:00:00-08:00</updated><id>http://localhost:4000/2023/03/06/tomorrow</id><content type="html" xml:base="http://localhost:4000/2023/03/06/tomorrow.html"><![CDATA[<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-03-11T10:11:25-08:00</updated><id>http://localhost:4000/feed.xml</id><entry><title type="html">Learning Recursion</title><link href="http://localhost:4000/2023/03/11/recursion.html" rel="alternate" type="text/html" title="Learning Recursion" /><published>2023-03-11T06:42:12-08:00</published><updated>2023-03-11T06:42:12-08:00</updated><id>http://localhost:4000/2023/03/11/recursion</id><content type="html" xml:base="http://localhost:4000/2023/03/11/recursion.html"><![CDATA[<p>Recursion can be a tough topic when you are first learning to code. It’s not as straightforward as writing a loop. It hides a bit of the complexity. But if you stick with it, it’ll open your mind to a new way of thinking.</p>
+
+<h2 id="breaking-it-down">Breaking it Down</h2>
+
+<p>When thinking recursively, you want to break your problem down into parts – parts that can be repeated. Beyond that, you’ll want to break those parts down into cases. There are two common cases in recursive parts: the base case and the recursive case. More on that in a bit.</p>
+
+<h2 id="from-iterative-to-recursive">From Iterative to Recursive</h2>
+
+<p>Let’s look at an iterative function. This function takes a number and counts down from that number to zero.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">countdown</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+  <span class="k">while</span> <span class="n">not</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="mi">0</span>
+    <span class="nb">puts</span> <span class="n">number</span>
+    <span class="n">number</span> <span class="o">-=</span> <span class="mi">1</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>This function can broken down into the following instructions: While number is greater than or equal to zero, print number, then subtract one from the number and do the same thing again. This “do the same thing again”, signals to us that we could solve this problem recursively. In fact, all iterative problems could be solved recursively.</p>
+
+<p>So how do we translate this into a recursive function. Well, we’ve got to figure out three things: what action to take at each step, how to continue to the next step, and when to stop. So what action are we taking? We are printing the number. How do we continue? We subtract one from the number. When do we stop? When the number is less than zero.</p>
+
+<p>This last question – “When do we stop?” – is often called the base case, and it usually the first thing you see in a recursive function. Let’s start with that.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">countdown</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+  <span class="k">return</span> <span class="k">if</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="mi">0</span>
+  <span class="c1"># TODO print number</span>
+  <span class="c1"># TODO continue to next step</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>As in the iterative function, the first thing we do is check when to stop. If the number is less than zero, we return early. The rest of the function does not execute and we are done.</p>
+
+<p>Now we’ve got to print our number. This is the action we take at each step, and it looks just as it did in the recursive method.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">countdown</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+  <span class="k">return</span> <span class="k">if</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="mi">0</span>
+  <span class="nb">puts</span> <span class="n">number</span>
+  <span class="c1"># TODO continue to next step</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>Now on to the “How do we continue?” Again, this is known as the recursive case, and it involves calling our method again inside of itself. In this case, we want to move on to the next number. Since we are counting down by one, that means we need to subtract one from the current number and pass that to our <code class="language-plaintext highlighter-rouge">countdown</code> method. Here is the final method looks like:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">countdown</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+  <span class="k">return</span> <span class="k">if</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="mi">0</span>
+  <span class="nb">puts</span> <span class="n">number</span>
+  <span class="n">countdown</span><span class="p">(</span><span class="n">number</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<span class="k">end</span></code></pre></figure>
+
+<p>So now <code class="language-plaintext highlighter-rouge">countdown</code> receives <code class="language-plaintext highlighter-rouge">number - 1</code>, and checks whether it is less than zero. If it is less than zero, the number is not printed and the recursion stops. If it is not less than zero, the number is printed and the recursion continues. This is what the calls to <code class="language-plaintext highlighter-rouge">countdown</code> will look like when passed the number three.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>countdown(3) -&gt; countdown(2) -&gt; countdown(1) -&gt; countdown(0) -&gt; countdown(-1)
+prints 3     -&gt; prints 2     -&gt; prints 1     -&gt; prints 0     -&gt; stops
+</code></pre></div></div>]]></content><author><name></name></author><summary type="html"><![CDATA[Recursion can be a tough topic when you are first learning to code. It’s not as straightforward as writing a loop. It hides a bit of the complexity. But if you stick with it, it’ll open your mind to a new way of thinking.]]></summary></entry><entry><title type="html">Tomorrow</title><link href="http://localhost:4000/2023/03/06/tomorrow.html" rel="alternate" type="text/html" title="Tomorrow" /><published>2023-03-06T00:00:00-08:00</published><updated>2023-03-06T00:00:00-08:00</updated><id>http://localhost:4000/2023/03/06/tomorrow</id><content type="html" xml:base="http://localhost:4000/2023/03/06/tomorrow.html"><![CDATA[<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
 <h2 id="subheading-1">Subheading 1</h2>
 
