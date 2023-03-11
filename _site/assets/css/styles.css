@@ -345,6 +345,9 @@ ul {
     padding: 1em 2em;
   }
 }
+.container img {
+  width: 100%;
+}
 
 .highlight {
   margin: 1.5em 0;
